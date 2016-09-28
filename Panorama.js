@@ -115,7 +115,7 @@ Panorama.prototype.getTexture = function ()
 
         // creating html video element and setting texture from it
         var video = document.createElement ('video');
-        video.addEventListener ('canplay', function (e) { texture.setSource (video); }.bind(this));
+        video.addEventListener ('canplay', function (e) { this.setSource (video); }.bind(texture));
         video.src = app.assets.get(this.video).getFileUrl();
         video.crossOrigin = 'anonymous';
         video.loop = true;
@@ -126,7 +126,7 @@ Panorama.prototype.getTexture = function ()
 };
 
 
-Panorama.prototype.update = function(dt)
+Panorama.prototype.update = function (dt)
 {
     // uploading video texture to GPU every 2nd frame
     
